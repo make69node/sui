@@ -114,11 +114,10 @@ impl SuiNode {
 
             let mut authority_clients = BTreeMap::new();
 
-            let system_state = state.get_sui_system_state_object().await?;
+            let sui_system_state = state.get_sui_system_state_object().await?;
 
-            if config.enable_reconfig && system_state.epoch > 0 {
+            if config.enable_reconfig && sui_system_state.epoch > 0 {
                 // Create NetworkAuthorityClient with this epoch's network information
-                let sui_system_state = state.get_sui_system_state_object().await?;
                 let epoch_validators = &sui_system_state.validators.active_validators;
 
                 for validator in epoch_validators {
