@@ -331,7 +331,7 @@ impl CheckpointStore {
     }
 
     pub fn handle_past_checkpoint(
-        &mut self,
+        &self,
         detail: bool,
         seq: CheckpointSequenceNumber,
     ) -> Result<CheckpointResponse, SuiError> {
